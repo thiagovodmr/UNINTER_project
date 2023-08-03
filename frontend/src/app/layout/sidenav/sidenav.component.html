@@ -2,5 +2,7 @@
   <img [routerLink]="['/']" src="/assets/logo.png" alt="">
   <div class="menu">
     <a [routerLink]="['/login']">login</a>
+    <a *ngIf="isLogged()">Cadastrar Doces</a>
+    <a *ngIf="isLogged()">Cadastrar Salgados</a>
   </div>
 </div>

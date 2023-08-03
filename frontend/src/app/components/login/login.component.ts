@@ -26,7 +26,10 @@ export class LoginComponent implements OnInit {
     const user = this.loginForm.value.user
     const password = this.loginForm.value.password
     this.service.authenticate(user, password).subscribe(
-      (value) => console.log(value),
+      (value) => {
+        console.log(value)
+        this.service.isAuthenticated = value ? true : false;
+      },
       (error) => console.log([error])
     )
   }

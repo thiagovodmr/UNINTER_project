@@ -7,15 +7,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidenavComponent } from './layout/sidenav/sidenav.component';
 import { LoginComponent } from './components/login/login.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { NavbarComponent } from './layout/navbar/navbar.component';
-import { HttpClientModule } from "@angular/common/http"
+import { HttpClientModule } from "@angular/common/http";
+import { ListComponent } from './components/list/list.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     SidenavComponent,
     LoginComponent,
-    NavbarComponent
+    ListComponent
   ],
   imports: [
     BrowserModule,

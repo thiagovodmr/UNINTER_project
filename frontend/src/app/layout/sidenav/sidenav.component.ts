@@ -1,3 +1,4 @@
+import { LoginService } from './../../services/login.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidenavComponent implements OnInit {
 
-  constructor() { }
+  constructor(private loginService : LoginService) { }
 
   ngOnInit(): void {
+  }
+
+  isLogged(){
+    return this.loginService.isAuthenticated;
   }
 
 }
