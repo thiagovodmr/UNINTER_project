@@ -1,1 +1,18 @@
-<p>list works!</p>
+<div class="content">
+    <div class="card" *ngFor="let item of items">
+        <div class="header">
+          <img [src]="item.img" alt="lanche">
+        </div>
+        <div class="description">
+            {{item.description}}
+        </div>
+        <div class="price">
+            {{item.price | currency: 'BR':"RS ":"2.2"}}
+        </div>
+        <div class="button">
+          <button>
+            Adicionar a Cesta
+          </button>
+        </div>
+    </div>
+</div>

@@ -8,14 +8,13 @@ import { SidenavComponent } from './layout/sidenav/sidenav.component';
 import { LoginComponent } from './components/login/login.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
-import { ListComponent } from './components/list/list.component'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidenavComponent,
     LoginComponent,
-    ListComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +22,8 @@ import { ListComponent } from './components/list/list.component'
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

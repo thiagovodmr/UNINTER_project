@@ -1,0 +1,50 @@
+.content{
+  padding: 50px;
+  display: grid;
+  grid-template-columns: repeat(5, 180px);
+  gap:30px;
+  background-color: #f7efef;
+
+  .card{
+    background-color: white;
+    border: 2px solid rgb(255, 192, 75);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+    img{
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .description{
+      margin-top: 10px;
+    }
+
+    .price{
+      color: orange;
+      margin-top: 10px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    button{
+      background-color: white;
+      margin-top: 20px;
+      border: none;
+      height:40px;
+      width: 130px;
+      border-radius: 16px;
+      border: 2px solid rgb(255, 192, 75);
+      cursor: pointer;
+
+      &:hover{
+        width: 135px;
+      }
+    }
+  }
+}

@@ -1,8 +1,11 @@
 <div class="sidenav">
-  <img [routerLink]="['/']" src="/assets/logo.png" alt="">
-  <div class="menu">
-    <a [routerLink]="['/login']">login</a>
-    <a *ngIf="isLogged()">Cadastrar Doces</a>
-    <a *ngIf="isLogged()">Cadastrar Salgados</a>
+  <header>
+    <img [routerLink]="['/']" src="/assets/logo.png" alt="">
+  </header>
+  <div class="items">
+    <span [routerLink]="['/list']">Ver Cardápio</span>
+    <span>Cadastrar Item</span>
+    <span>Cadastrar Categoria</span>
+    <span [routerLink]="['/login']">Login</span>
   </div>
 </div>
