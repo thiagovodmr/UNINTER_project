@@ -31,9 +31,8 @@ dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.postgresql:postgresql:42.2.27")
-	implementation("org.springdoc:springdoc-openapi-data-rest:1.6.0")
-	implementation("org.springdoc:springdoc-openapi-ui:1.6.0")
-	implementation("org.springdoc:springdoc-openapi-kotlin:1.6.0")
+	// https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui
+	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2")
 
 	compileOnly("org.projectlombok:lombok")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
@@ -47,6 +46,3 @@ tasks.withType<KotlinCompile> {
 	}
 }
 
-//tasks.withType<Test> {
-//	useJUnitPlatform()
-//}
