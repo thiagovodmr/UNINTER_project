@@ -14,7 +14,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   declarations: [
     AppComponent,
     SidenavComponent,
-    LoginComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

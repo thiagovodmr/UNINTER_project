@@ -8,34 +8,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent implements OnInit {
-  isUserLogged : boolean = false;
-  isUserLoggedAdmin : boolean = false;
+
 
   constructor(
-    private loginService : LoginService,
+    public loginService : LoginService,
     private session : SessionService
   ) { }
 
   ngOnInit(): void {
-    this.isAdmin();
-  }
-
-  isLogged(): boolean{
-    this.isUserLogged = !!this.session.getUserLogged()
-    return this.isUserLogged
-  }
-
-  isAdmin(){
-    if(this.isLogged()){
-      this.isUserLoggedAdmin = (this.session.getUserLogged().role == "ADMIN")
+    if(this.session.getUserLogged()){
+      this.loginService.isAuthenticated = true
+      if(this.session.getUserLogged().role == "ADMIN"){
+        this.loginService.isAdmin = true
+      }
     }
-    return false
   }
 
   logout(){
     this.session.logout()
-    this.isUserLogged = false
-    this.isUserLoggedAdmin = false
+    this.loginService.isAuthenticated = false
   }
 
 }

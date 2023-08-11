@@ -4,9 +4,8 @@
   </header>
   <div class="items">
     <span [routerLink]="['/list']">Ver Cardápio</span>
-    <span *ngIf="isUserLoggedAdmin">Cadastrar Item</span>
-    <span *ngIf="isUserLoggedAdmin">Cadastrar Categoria</span>
-    <span *ngIf="!isUserLogged" [routerLink]="['/login']">Login</span>
-    <span *ngIf="isUserLogged" (click)="logout()">Logout</span>
+    <span *ngIf="loginService.isAuthenticated && loginService.isAdmin" [routerLink]="['item/add']">Cadastrar Item</span>
+    <span *ngIf="!loginService.isAuthenticated" [routerLink]="['/login']">Login</span>
+    <span *ngIf="loginService.isAuthenticated" (click)="logout()">Logout</span>
   </div>
 </div>

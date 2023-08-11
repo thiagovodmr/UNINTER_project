@@ -1,0 +1,6 @@
+<form [formGroup]="pedidoForm" (ngSubmit)="criarPedido()">
+  <input type="file" (change)="onFileSelected($event)">
+  <input type="text" formControlName="description" placeholder="Descrição">
+  <input type="number" formControlName="price" placeholder="Preço">
+  <button type="submit">Criar Pedido</button>
+</form>
