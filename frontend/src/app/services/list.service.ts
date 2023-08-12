@@ -21,6 +21,11 @@ export class ListService {
   }
 
   listAll() : Observable<any>{
-    return this.http.get(`${this.urlAPI}/item`)
+    return this.http.get(`${this.urlAPI}/item`).pipe(take(1))
   }
+
+  listByCategory(categoryId : number) : Observable<any>{
+    return this.http.get(`${this.urlAPI}/item/byCategory/${categoryId}`).pipe(take(1))
+  }
+
 }

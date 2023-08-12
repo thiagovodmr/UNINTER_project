@@ -4,6 +4,9 @@ import { ListComponent } from '../pages/list/list.component';
 import { RoutingModule } from './routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListAddComponent } from '../pages/add/list-add.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+
 
 @NgModule({
   declarations: [
@@ -14,7 +17,8 @@ import { ListAddComponent } from '../pages/add/list-add.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    RoutingModule
+    RoutingModule,
+    FontAwesomeModule
   ]
 })
-export class ListModule { }
+export class ListModule {}

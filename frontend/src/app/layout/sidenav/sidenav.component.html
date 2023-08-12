@@ -5,7 +5,24 @@
   <div class="items">
     <span [routerLink]="['/list']">Ver Cardápio</span>
     <span *ngIf="loginService.isAuthenticated && loginService.isAdmin" [routerLink]="['list/add']">Cadastrar Item</span>
-    <span *ngIf="!loginService.isAuthenticated" [routerLink]="['/login']">Login</span>
-    <span *ngIf="loginService.isAuthenticated" (click)="logout()">Logout</span>
+  </div>
+  <div class="car">
+    <button [routerLink]="['/car']">
+      <fa-icon icon="shopping-cart"></fa-icon>
+    </button>
+  </div>
+  <div class="login-logout">
+    <span *ngIf="!loginService.isAuthenticated" [routerLink]="['/login']">
+      <span class="icon">
+        <fa-icon icon="sign-in-alt"></fa-icon>
+      </span>
+      Login
+    </span>
+    <span *ngIf="loginService.isAuthenticated" (click)="logout()">
+      <span class="icon">
+        <fa-icon icon="sign-in-alt"></fa-icon>
+      </span>
+      Logout
+    </span>
   </div>
 </div>

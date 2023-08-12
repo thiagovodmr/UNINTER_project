@@ -20,6 +20,8 @@ export class SidenavComponent implements OnInit {
       this.loginService.isAuthenticated = true
       if(this.session.getUserLogged().role == "ADMIN"){
         this.loginService.isAdmin = true
+      }else{
+        this.loginService.isAdmin = false
       }
     }
   }
@@ -27,6 +29,7 @@ export class SidenavComponent implements OnInit {
   logout(){
     this.session.logout()
     this.loginService.isAuthenticated = false
+    this.loginService.isAdmin = false
   }
 
 }

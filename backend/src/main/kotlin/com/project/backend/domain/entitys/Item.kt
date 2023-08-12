@@ -5,7 +5,9 @@ import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
+import jakarta.persistence.JoinColumn
 import jakarta.persistence.Lob
+import jakarta.persistence.ManyToOne
 import org.hibernate.annotations.Type
 
 @Entity(name="items")
@@ -16,5 +18,9 @@ class Item(
     val price: Double,
 
     @Column(name = "image", columnDefinition = "BINARY")
-    val image: ByteArray
+    val image: ByteArray,
+
+    @ManyToOne
+    @JoinColumn(name ="category_id")
+    val category: Category
 )

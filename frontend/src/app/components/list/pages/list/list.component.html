@@ -1,4 +1,22 @@
-<div class="content">
+<div class="filter">
+  <span (click)="getListByCategory(1)">
+    Bolos
+    <fa-icon icon="birthday-cake"></fa-icon>
+  </span>
+  <span (click)="getListByCategory(2)">
+    Doces
+    <fa-icon icon="candy-cane"></fa-icon>
+  </span>
+  <span  (click)="getListByCategory(3)">
+    Salgados
+    <fa-icon icon="pizza-slice"></fa-icon>
+  </span>
+  <span (click)="getList()">
+    Todos
+    <fa-icon icon="clipboard-list"></fa-icon>
+  </span>
+</div>
+<div class="grid">
     <div class="card" *ngFor="let item of items">
         <div class="header">
           <img [src]="item.image" alt="lanche">
@@ -9,10 +27,14 @@
         <div class="price">
             {{item.price | currency: 'BR':"RS ":"1.2-2"}}
         </div>
-        <div class="button">
-          <button>
-            Adicionar a Cesta
-          </button>
-        </div>
+
+        <button>
+          Adicionar ao
+          <fa-icon icon="cart-plus"></fa-icon>
+        </button>
     </div>
+</div>
+
+<div class="alert" *ngIf="items.length == 0">
+  Nenhum item encontrado
 </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ListService } from 'src/app/services/list.service';
-import { environment } from 'src/environments/environment';
+
 
 @Component({
   selector: 'app-list',
@@ -15,13 +15,26 @@ export class ListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+   this.getList()
+  }
+
+  getList(){
     this.service.listAll().subscribe(
       (res) => {
-        console.log(res)
         this.items = res
       },
       (error) => console.error(error)
     )
   }
 
+  getListByCategory(id : number){
+    this.service.listByCategory(id).subscribe(
+      (res) => {
+        this.items = res
+      },
+      (error) => console.error(error)
+    )
+  }
 }
+
+

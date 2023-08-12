@@ -8,13 +8,19 @@ import { SidenavComponent } from './layout/sidenav/sidenav.component';
 import { LoginComponent } from './components/login/login.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { CarComponent } from './components/car/car.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidenavComponent,
-    LoginComponent
+    LoginComponent,
+    CarComponent
   ],
   imports: [
     BrowserModule,
@@ -28,4 +34,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(library: FaIconLibrary) {
+    library.addIconPacks(fas, fab, far);
+  }
+}

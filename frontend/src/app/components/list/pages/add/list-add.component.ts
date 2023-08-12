@@ -1,3 +1,4 @@
+import { CategoryService } from './../../../../services/category.service';
 import { ListService } from './../../../../services/list.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -13,22 +14,27 @@ import { Router } from '@angular/router';
 })
 export class ListAddComponent implements OnInit {
 
+  categories: any =  []
   pedidoForm: FormGroup;
   apiUrl : String = environment.API_URL;
 
   constructor(
     private fb: FormBuilder,
     private service: ListService,
+    private categoryService: CategoryService,
     private router: Router
   ) {
     this.pedidoForm = this.fb.group({
       image: [null, Validators.required],
       description: ['', Validators.required],
-      price: [0, Validators.required]
+      price: [0, Validators.required],
+      status_id: [1, Validators.required]
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getCategorys()
+  }
 
   onFileSelected(event: any) {
     const file = event.target.files[0];
@@ -45,8 +51,9 @@ export class ListAddComponent implements OnInit {
     formData.append('image', values.image); // Adicione a imagem diretamente ao FormData
     formData.append('description', values.description);
     formData.append('price', values.price.toString());
+    formData.append("category_id", values.status_id)
 
-  this.service.create(formData).subscribe(
+    this.service.create(formData).subscribe(
       (response) => {
         this.router.navigate(['/list'])
         this.pedidoForm.reset();
@@ -54,6 +61,17 @@ export class ListAddComponent implements OnInit {
       (error) => {
         alert("Não foi possível cadastrar produtos")
         console.error('Erro ao criar pedido:', error);
+      }
+    );
+  }
+
+  getCategorys(){
+    this.categoryService.listAll().subscribe(
+      (response) => {
+        this.categories = response
+      },
+      (error) => {
+        console.error('Erro ao listar categorias:', error);
       }
     );
   }
