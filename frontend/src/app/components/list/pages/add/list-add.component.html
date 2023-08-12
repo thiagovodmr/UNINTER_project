@@ -1,0 +1,19 @@
+<div class="content">
+  <h1>Cadastrar Item</h1>
+
+  <form [formGroup]="pedidoForm" (ngSubmit)="criarPedido()">
+    <div class="group">
+      <label>Imagem</label>
+      <input type="file" (change)="onFileSelected($event)">
+    </div>
+    <div class="group">
+      <label>Descrição</label>
+      <input type="text" formControlName="description" placeholder="Descrição">
+    </div>
+    <div class="group">
+      <label>Preço</label>
+      <input type="number" formControlName="price" placeholder="Preço">
+    </div>
+    <button type="submit">Criar Item</button>
+  </form>
+</div>

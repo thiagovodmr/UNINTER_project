@@ -1,5 +1,6 @@
 package com.project.backend.domain.entitys
 
+import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
@@ -14,6 +15,6 @@ class Item(
     val description: String,
     val price: Double,
 
-    @Lob
+    @Column(name = "image", columnDefinition = "BINARY")
     val image: ByteArray
 )

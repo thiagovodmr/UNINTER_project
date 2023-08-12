@@ -1,13 +1,13 @@
 <div class="content">
     <div class="card" *ngFor="let item of items">
         <div class="header">
-          <img [src]="item.img" alt="lanche">
+          <img [src]="item.image" alt="lanche">
         </div>
         <div class="description">
             {{item.description}}
         </div>
         <div class="price">
-            {{item.price | currency: 'BR':"RS ":"2.2"}}
+            {{item.price | currency: 'BR':"RS ":"1.2-2"}}
         </div>
         <div class="button">
           <button>

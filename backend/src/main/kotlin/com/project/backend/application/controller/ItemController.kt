@@ -1,9 +1,11 @@
 package com.project.backend.application.controller
 
+import com.project.backend.application.dtos.ItemDTO
 import com.project.backend.business.services.ItemService
 import com.project.backend.domain.entitys.Item
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
@@ -24,6 +26,16 @@ class ItemController(
         return try{
             val item = this.service.create(image.bytes, description, price)
             ResponseEntity.ok(item)
+        }catch(e: Exception) {
+            ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build()
+        }
+    }
+
+    @GetMapping
+    fun listAll() : ResponseEntity<List<ItemDTO>>{
+        return try{
+            val items = this.service.list()
+            ResponseEntity.ok(items)
         }catch(e: Exception) {
             ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build()
         }
