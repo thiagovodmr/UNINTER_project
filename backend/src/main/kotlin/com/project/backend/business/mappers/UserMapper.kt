@@ -1,6 +1,7 @@
 package com.project.backend.business.mappers
 
 import com.project.backend.application.dtos.UserDto
+import com.project.backend.application.dtos.UserLoginDto
 import com.project.backend.domain.entitys.User
 import org.springframework.stereotype.Service
 
@@ -10,6 +11,14 @@ class UserMapper{
         return UserDto(
             user.name,
             user.password,
+            user.role
+        )
+    }
+
+    fun entityToLoginDto(user: User) : UserLoginDto{
+        return UserLoginDto(
+            user.id!!,
+            user.name,
             user.role
         )
     }

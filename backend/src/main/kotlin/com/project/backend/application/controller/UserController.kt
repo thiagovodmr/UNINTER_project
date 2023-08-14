@@ -2,6 +2,7 @@ package com.project.backend.application.controller
 
 import com.project.backend.application.`class`.LoginRequest
 import com.project.backend.application.dtos.UserDto
+import com.project.backend.application.dtos.UserLoginDto
 import com.project.backend.business.services.UserService
 import com.project.backend.domain.entitys.User
 import org.springframework.http.HttpStatus
@@ -18,7 +19,7 @@ class UserController (
     private val userService: UserService
 ){
     @PostMapping("/login")
-    fun login(@RequestBody login : LoginRequest) : ResponseEntity<UserDto>{
+    fun login(@RequestBody login : LoginRequest) : ResponseEntity<UserLoginDto>{
         return try{
             val result = this.userService.login(login.user, login.password)
             if(result == null){
@@ -40,6 +41,5 @@ class UserController (
         }catch(e: Exception){
             ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build()
         }
-
     }
 }

@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent implements OnInit {
-
+  countItems : number = 0;
 
   constructor(
     public loginService : LoginService,

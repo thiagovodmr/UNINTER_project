@@ -1,6 +1,7 @@
 package com.project.backend.business.services
 
 import com.project.backend.application.dtos.UserDto
+import com.project.backend.application.dtos.UserLoginDto
 import com.project.backend.business.mappers.UserMapper
 import com.project.backend.domain.entitys.User
 import com.project.backend.domain.repositorys.UserRepository
@@ -12,9 +13,9 @@ class UserService(
     private val userMapper: UserMapper
 ){
 
-    fun login(username: String, password: String): UserDto? {
+    fun login(username: String, password: String): UserLoginDto? {
         val user = userRepository.findByNameAndPassword(username, password)
-        return user?.let(userMapper::entityToDto)
+        return user?.let(userMapper::entityToLoginDto)
     }
 
     fun create(userDto: UserDto) : User{
