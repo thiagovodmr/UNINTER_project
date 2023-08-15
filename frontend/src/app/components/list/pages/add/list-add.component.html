@@ -1,5 +1,7 @@
 <div class="content">
-  <h1>Cadastrar Item</h1>
+  <header>
+    <h1>Cadastrar Item</h1>
+  </header>
 
   <form [formGroup]="pedidoForm" (ngSubmit)="criarPedido()">
     <div class="group">
@@ -20,6 +22,6 @@
         <option *ngFor="let category of categories" [value]="category.id">{{category.description}}</option>
       </select>
     </div>
-    <button type="submit">Criar Item</button>
+    <button type="submit">Cadastrar</button>
   </form>
 </div>

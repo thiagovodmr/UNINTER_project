@@ -19,4 +19,8 @@ class CarService(
         val car = Car(null, user, item)
         return this.repository.save(car)
     }
+
+    fun getItemsCar(userId : Long) : List<Car>{
+        return this.repository.findByUserId(userId)
+    }
 }

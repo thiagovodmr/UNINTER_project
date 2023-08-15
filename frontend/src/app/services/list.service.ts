@@ -28,4 +28,9 @@ export class ListService {
     return this.http.get(`${this.urlAPI}/item/byCategory/${categoryId}`).pipe(take(1))
   }
 
+  PostAddCar(itemId : number, userId : number){
+    const data = {itemId: itemId, clientId: userId}
+    return this.http.post(`${this.urlAPI}/item/car`, data).pipe(take(1))
+  }
+
 }

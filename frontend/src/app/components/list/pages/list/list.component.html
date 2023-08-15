@@ -28,7 +28,7 @@
             {{item.price | currency: 'BR':"RS ":"1.2-2"}}
         </div>
 
-        <button>
+        <button type="button" (click)="addInCar(item.id)">
           Adicionar ao
           <fa-icon icon="cart-plus"></fa-icon>
         </button>
