@@ -1,3 +1,4 @@
+import { CarService } from './../../services/car.service';
 import { SessionService } from './../../services/session.service';
 import { LoginService } from './../../services/login.service';
 import { Component, OnInit } from '@angular/core';
@@ -12,15 +13,18 @@ export class SidenavComponent implements OnInit {
 
   constructor(
     public loginService : LoginService,
-    private session : SessionService
+    private session : SessionService,
+    private carService: CarService
   ) { }
 
   ngOnInit(): void {
-    if(this.session.getUserLogged()){
+    const userLogged = this.session.getUserLogged()
+    if(userLogged){
       this.loginService.isAuthenticated = true
-      if(this.session.getUserLogged().role == "ADMIN"){
+      if(userLogged.role == "ADMIN"){
         this.loginService.isAdmin = true
       }else{
+        this.countItemsCar(userLogged.id)
         this.loginService.isAdmin = false
       }
     }
@@ -30,6 +34,15 @@ export class SidenavComponent implements OnInit {
     this.session.logout()
     this.loginService.isAuthenticated = false
     this.loginService.isAdmin = false
+  }
+
+  countItemsCar(id: number){
+    this.carService.count(id).subscribe(
+      (res) => {
+        this.countItems = parseInt(res)
+      },
+      (err) => {console.log(err)}
+    )
   }
 
 }

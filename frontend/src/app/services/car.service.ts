@@ -20,4 +20,8 @@ export class CarService {
   listAll(clientId : number) : Observable<any>{
     return this.http.get(`${this.urlAPI}/car/${clientId}`).pipe(take(1))
   }
+
+  count(clientId : number) : Observable<any>{
+    return this.http.get(`${this.urlAPI}/car/count/${clientId}`).pipe(take(1))
+  }
 }

@@ -24,4 +24,14 @@ class CarController(
             ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build()
         }
     }
+
+    @GetMapping("/count/{id}")
+    fun getCountAll(@PathVariable id : Long) : ResponseEntity<Long>{
+        return try {
+            val count = this.service.countItems(id);
+            ResponseEntity.ok(count)
+        }catch (e: Exception){
+            ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build()
+        }
+    }
 }

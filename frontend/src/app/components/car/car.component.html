@@ -1,7 +1,26 @@
-<h1>Carrinho</h1>
+<div class="content">
+  <h1>Carrinho</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Preço por unidade</th>
+        <th>Escolha a quantidade</th>
+        <th>Preço final</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of items; let i = index">
+        <td>{{row.item.description}}</td>
+        <td>{{row.item.price | currency:'BR':'R$ ':'1.2-2'}}</td>
+        <td>
+          <input type="number" [value]="row.cont" (change)="changeCont(i, $event)">
+        </td>
+        <td>{{row.price | currency:'BR':'R$ ':'1.2-2'}}</td>
+      </tr>
+    </tbody>
+  </table>
 
-<ul>
-  <li *ngFor="let row of items">
-    {{row.item.description}}
-  </li>
-</ul>
+  <button type="button">Confirmar Pedido</button>
+</div>
+

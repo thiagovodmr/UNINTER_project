@@ -22,14 +22,23 @@ export class CarComponent implements OnInit {
     if(user){
       this.carService.listAll(user.id).subscribe(
         (res) => {
-          console.log(res)
-          this.items = res
+          this.items = res.map((row : any) => {
+              return {...row, cont: 1, price: row.item.price}
+          })
         },
         (error) => {console.log(error)}
       )
     }else{
       this.route.navigate(["/login"])
     }
+  }
+
+  changeCont(index: number, event: any){
+    const value = parseFloat(event.target.value);
+    const row = this.items[index]
+
+    row.cont = value
+    row.price = parseFloat(row.cont) * (row.item.price)
   }
 
 }

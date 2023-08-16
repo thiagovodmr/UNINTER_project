@@ -11,4 +11,9 @@ interface CarRepository  : JpaRepository<Car, Long>{
         SELECT * from car where id_client = :clientId
     """, nativeQuery = true)
     fun findByUserId(clientId: Long) : List<Car>
+
+    @Query("""
+        SELECT count(*) from car where id_client = :clientId
+    """, nativeQuery = true)
+    fun countByUserId(clientId: Long) : Long
 }

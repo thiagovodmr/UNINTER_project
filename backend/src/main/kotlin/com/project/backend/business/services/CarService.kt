@@ -23,4 +23,8 @@ class CarService(
     fun getItemsCar(userId : Long) : List<Car>{
         return this.repository.findByUserId(userId)
     }
+
+    fun countItems(userId: Long) : Long{
+        return this.repository.countByUserId(userId)
+    }
 }
