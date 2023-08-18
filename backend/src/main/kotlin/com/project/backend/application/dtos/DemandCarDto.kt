@@ -1,6 +1,5 @@
 package com.project.backend.application.dtos
 
-data class CarDto(
-    val clientId : Long,
+data class DemandCarDto(
     val itemId : Long,
 )

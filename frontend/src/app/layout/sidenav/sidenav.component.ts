@@ -1,3 +1,4 @@
+import { CarEmitterService } from './../../emitter/car-emitter.service';
 import { CarService } from './../../services/car.service';
 import { SessionService } from './../../services/session.service';
 import { LoginService } from './../../services/login.service';
@@ -14,7 +15,8 @@ export class SidenavComponent implements OnInit {
   constructor(
     public loginService : LoginService,
     private session : SessionService,
-    private carService: CarService
+    private carService: CarService,
+    private emitter: CarEmitterService
   ) { }
 
   ngOnInit(): void {
@@ -28,6 +30,12 @@ export class SidenavComponent implements OnInit {
         this.loginService.isAdmin = false
       }
     }
+
+    this.emitter.getEventEmitter().subscribe(dados => {
+      if(dados){
+        this.countItemsCar(userLogged.id)
+      }
+    });
   }
 
   logout(){

@@ -9,18 +9,31 @@
         <th>Preço final</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody *ngIf="items.length > 0 else nv">
       <tr *ngFor="let row of items; let i = index">
         <td>{{row.item.description}}</td>
         <td>{{row.item.price | currency:'BR':'R$ ':'1.2-2'}}</td>
         <td>
-          <input type="number" [value]="row.cont" (change)="changeCont(i, $event)">
+          <input type="number" [value]="row.qtd" (change)="changeCont(i, $event)">
         </td>
         <td>{{row.price | currency:'BR':'R$ ':'1.2-2'}}</td>
       </tr>
+      <tr class="total">
+        <td colspan="2">Total</td>
+        <td colspan="2">{{this.totalPrice | currency:'BR':'R$ ':'1.2-2'}}</td>
+      </tr>
     </tbody>
+    <ng-template #nv>
+      <tbody>
+          <tr>
+            <td colspan="4">Nenhum valor encontrado</td>
+          </tr>
+      </tbody>
+    </ng-template>
   </table>
 
-  <button type="button">Confirmar Pedido</button>
+  <button type="button" (click)="confirmDemand()">Confirmar Pedido</button>
 </div>
+
+
 

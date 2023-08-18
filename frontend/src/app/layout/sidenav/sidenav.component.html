@@ -5,6 +5,7 @@
   <div class="items">
     <span [routerLink]="['/list']">Ver Cardápio</span>
     <span *ngIf="loginService.isAuthenticated && loginService.isAdmin" [routerLink]="['list/add']">Cadastrar Item</span>
+    <span *ngIf="loginService.isAuthenticated" [routerLink]="['queue']">Ver Fila</span>
   </div>
   <div class="car">
     <button [routerLink]="['/car']">

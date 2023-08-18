@@ -8,6 +8,12 @@ class Car (
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id : Long?,
 
+    @Column
+    val qtd: Long,
+
+    @Column
+    val price: Double,
+
     @ManyToOne
     @JoinColumn(name ="id_client")
     val client: User,

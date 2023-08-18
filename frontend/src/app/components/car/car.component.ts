@@ -9,7 +9,8 @@ import { SessionService } from 'src/app/services/session.service';
   styleUrls: ['./car.component.scss']
 })
 export class CarComponent implements OnInit {
-  items : any = []
+  items : any = [];
+  totalPrice : number = 0;
 
   constructor(
     private carService : CarService,
@@ -18,19 +19,7 @@ export class CarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const user = this.sessionService.getUserLogged()
-    if(user){
-      this.carService.listAll(user.id).subscribe(
-        (res) => {
-          this.items = res.map((row : any) => {
-              return {...row, cont: 1, price: row.item.price}
-          })
-        },
-        (error) => {console.log(error)}
-      )
-    }else{
-      this.route.navigate(["/login"])
-    }
+    this.loadItems()
   }
 
   changeCont(index: number, event: any){
@@ -39,6 +28,48 @@ export class CarComponent implements OnInit {
 
     row.cont = value
     row.price = parseFloat(row.cont) * (row.item.price)
+
+    this.updateTotalPrice()
+  }
+
+  loadItems(){
+    const user = this.sessionService.getUserLogged()
+    if(user){
+      this.carService.listAll(user.id).subscribe(
+        (res) => {
+          this.items = res
+          this.updateTotalPrice()
+        },
+        (error) => {console.log(error)}
+      )
+    }else{
+      this.route.navigate(["/login"])
+    }
+  }
+
+  updateTotalPrice(){
+    this.totalPrice = 0;
+    this.items.forEach((item : any) => {
+      this.totalPrice += item.price
+    });
+  }
+
+  confirmDemand(){
+    const data = {
+      clientId : this.sessionService.getUserLogged().id,
+      items: this.items
+    }
+    this.carService.confirmDemand(data).subscribe(
+      (res) => {
+        if(res == true){
+          alert("pedido realizado com sucesso!!")
+          this.loadItems();
+        }else{
+          console.log(res)
+        }
+      },
+      (error) => {console.log(error)}
+    )
   }
 
 }

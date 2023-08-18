@@ -14,13 +14,15 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { CarComponent } from './components/car/car.component';
+import { QueueComponent } from './components/queue/queue.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidenavComponent,
     LoginComponent,
-    CarComponent
+    CarComponent,
+    QueueComponent
   ],
   imports: [
     BrowserModule,

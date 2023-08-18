@@ -16,7 +16,7 @@ class CarService(
         val user = this.userRepository.findById(clientId).orElseThrow()
         val item = this.itemRepository.findById(itemId).orElseThrow()
 
-        val car = Car(null, user, item)
+        val car = Car(null, 1, item.price ,user, item)
         return this.repository.save(car)
     }
 

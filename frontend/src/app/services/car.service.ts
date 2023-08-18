@@ -24,4 +24,8 @@ export class CarService {
   count(clientId : number) : Observable<any>{
     return this.http.get(`${this.urlAPI}/car/count/${clientId}`).pipe(take(1))
   }
+
+  confirmDemand(data: any){
+    return this.http.post(`${this.urlAPI}/demand`, data).pipe(take(1))
+  }
 }

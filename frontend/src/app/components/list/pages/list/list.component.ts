@@ -1,3 +1,4 @@
+import { CarEmitterService } from './../../../../emitter/car-emitter.service';
 import { SessionService } from './../../../../services/session.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -15,7 +16,8 @@ export class ListComponent implements OnInit {
   constructor(
     private service : ListService,
     private sessionService : SessionService,
-    private route : Router
+    private route : Router,
+    private emitter : CarEmitterService
   ) { }
 
   ngOnInit(): void {
@@ -45,15 +47,14 @@ export class ListComponent implements OnInit {
     if(user.id){
       this.service.PostAddCar(itemId, user.id).subscribe(
         (res) => {
-          alert("item adicionado ao carrinho")
-           console.log(res)
+          this.emitter.sendEvend(true)
+          alert("item adicionado")
         },
         (error) => console.error(error)
       )
     }else{
       this.route.navigate(["/login"])
     }
-
   }
 }
 
