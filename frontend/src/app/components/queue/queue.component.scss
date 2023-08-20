@@ -19,10 +19,14 @@
     width: 90%;
     border-collapse: collapse;
     text-align: center;
+    background-color: white;
 
     thead{
       th{
-        border: 1px solid orange;
+        padding: 10px;
+        background-color: orange;
+        color: white;
+        font-weight: 400;
       }
     }
 

@@ -8,6 +8,7 @@ import { SidenavComponent } from './layout/sidenav/sidenav.component';
 import { LoginComponent } from './components/login/login.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
+import { NgChartsModule } from 'ng2-charts';
 
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -15,6 +16,7 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { CarComponent } from './components/car/car.component';
 import { QueueComponent } from './components/queue/queue.component';
+import { GraphicsComponent } from './components/graphics/graphics.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { QueueComponent } from './components/queue/queue.component';
     SidenavComponent,
     LoginComponent,
     CarComponent,
-    QueueComponent
+    QueueComponent,
+    GraphicsComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,8 @@ import { QueueComponent } from './components/queue/queue.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

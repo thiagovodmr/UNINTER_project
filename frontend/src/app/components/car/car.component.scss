@@ -19,17 +19,21 @@
     width: 90%;
     border-collapse: collapse;
     text-align: center;
+    background-color: white;
 
     thead{
       th{
-        border: 1px solid orange;
+        padding: 10px;
+        background-color: orange;
+        color: white;
+        font-weight: 400;
       }
     }
 
     tbody{
       td{
         padding: 10px 14px;
-        border-bottom: 1px solid gray;
+        border-bottom: 1px solid black;
       }
     }
 
@@ -37,8 +41,8 @@
       td{
         border: none;
         font-size: 20px;
-        color: red;
-        padding-top: 50px;
+        color: black;
+        padding-top: 10px;
       }
     }
   }

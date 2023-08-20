@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class SidenavComponent implements OnInit {
   countItems : number = 0;
+  name: String = "";
 
   constructor(
     public loginService : LoginService,
@@ -25,6 +26,7 @@ export class SidenavComponent implements OnInit {
     const userLogged = this.session.getUserLogged()
     if(userLogged){
       this.loginService.isAuthenticated = true
+      this.name = userLogged.name
       if(userLogged.role == "ADMIN"){
         this.loginService.isAdmin = true
       }else{
