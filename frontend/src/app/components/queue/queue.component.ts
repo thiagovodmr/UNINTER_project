@@ -1,6 +1,7 @@
 import { SessionService } from 'src/app/services/session.service';
 import { Component, OnInit } from '@angular/core';
 import { QueueService } from 'src/app/services/queue.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-queue',
@@ -12,7 +13,8 @@ export class QueueComponent implements OnInit {
 
   constructor(
     private service: QueueService,
-    private session: SessionService
+    private session: SessionService,
+    public loginService : LoginService
   ) { }
 
   ngOnInit(): void {

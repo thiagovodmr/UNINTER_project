@@ -16,6 +16,9 @@ class Demand (
     @Column(name="price_by_quant")
     val priceByQuant: Double,
 
+    @Column(name = "order_hash")
+    val orderHash : String,
+
     @Column(name = "date_demanded")
     var dateDemanded : LocalDateTime? = LocalDateTime.now(),
 

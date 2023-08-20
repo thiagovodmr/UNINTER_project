@@ -21,7 +21,9 @@
     }
 
     .description{
+      height: 100%;
       margin-top: 10px;
+      text-align: center;
     }
 
     .price{
@@ -35,7 +37,7 @@
       background-color: white;
       margin-top: 20px;
       border: none;
-      height:40px;
+      min-height:40px;
       width: 150px;
       border-radius: 16px;
       border: 2px solid rgb(255, 192, 75);

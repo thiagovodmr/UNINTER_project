@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CarEmitterService } from 'src/app/emitter/car-emitter.service';
 import { CarService } from 'src/app/services/car.service';
 import { SessionService } from 'src/app/services/session.service';
 
@@ -15,7 +16,8 @@ export class CarComponent implements OnInit {
   constructor(
     private carService : CarService,
     private sessionService : SessionService,
-    private route: Router
+    private route: Router,
+    private emitter: CarEmitterService
   ) { }
 
   ngOnInit(): void {
@@ -26,8 +28,8 @@ export class CarComponent implements OnInit {
     const value = parseFloat(event.target.value);
     const row = this.items[index]
 
-    row.cont = value
-    row.price = parseFloat(row.cont) * (row.item.price)
+    row.qtd = value
+    row.price = parseFloat(row.qtd) * (row.item.price)
 
     this.updateTotalPrice()
   }
@@ -64,6 +66,7 @@ export class CarComponent implements OnInit {
         if(res == true){
           alert("pedido realizado com sucesso!!")
           this.loadItems();
+          this.emitter.sendEvend(true)
         }else{
           console.log(res)
         }

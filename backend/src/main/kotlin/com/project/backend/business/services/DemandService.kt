@@ -18,6 +18,11 @@ class DemandService(
     @Transactional
     fun create(demand : DemandDto) : Boolean{
         val client = this.userRepository.findById(demand.clientId).orElseThrow()
+        var lastId = this.repository.findTopByOrderByIdDesc()
+
+        if(lastId == null){
+            lastId = 1L
+        }
 
         if(demand.items.isNotEmpty()){
             demand.items.forEach{
@@ -26,7 +31,8 @@ class DemandService(
                     priceByQuant = it.price,
                     qtdchanged = it.qtd,
                     client = client,
-                    item = it.item
+                    item = it.item,
+                    orderHash = generateOrderCode(lastId)
                 )
                 this.repository.save(newDemand)
             }
@@ -47,4 +53,11 @@ class DemandService(
             this.repository.getByUserId(clientId)
         }
     }
+
+    private fun generateOrderCode(orderId: Long): String {
+        val orderString = "ORD${String.format("%04d", orderId.toInt())}"
+        val randomSuffix = (1000..9999).random() // Gera um número aleatório de 4 dígitos
+        return "$orderString$randomSuffix"
+    }
+
 }

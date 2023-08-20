@@ -1,16 +1,20 @@
 <div class="content">
-  <h1>Fila</h1>
+  <h1> {{loginService.isAdmin ? "Fila" : "Meus Pedidos"}}</h1>
   <table>
     <thead>
       <tr>
+        <th>Ficha</th>
         <th>Cliente</th>
         <th>Preço do pedido</th>
+        <th>Status</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let row of queue">
+        <td>{{row.orderHash}}</td>
         <td>{{row.nameClient}}</td>
         <td> {{row.priceDemand | currency : "BR":"R$":"1.2-2"}}</td>
+        <td>{{row.status}}</td>
       </tr>
     </tbody>
   </table>

@@ -3,6 +3,7 @@ import { CarService } from './../../services/car.service';
 import { SessionService } from './../../services/session.service';
 import { LoginService } from './../../services/login.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidenav',
@@ -16,7 +17,8 @@ export class SidenavComponent implements OnInit {
     public loginService : LoginService,
     private session : SessionService,
     private carService: CarService,
-    private emitter: CarEmitterService
+    private emitter: CarEmitterService,
+    private router : Router
   ) { }
 
   ngOnInit(): void {
@@ -42,6 +44,7 @@ export class SidenavComponent implements OnInit {
     this.session.logout()
     this.loginService.isAuthenticated = false
     this.loginService.isAdmin = false
+    this.router.navigate(["/list"])
   }
 
   countItemsCar(id: number){
