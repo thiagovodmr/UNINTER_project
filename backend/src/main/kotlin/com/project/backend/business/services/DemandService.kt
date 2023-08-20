@@ -22,7 +22,11 @@ class DemandService(
 
         if(lastId == null){
             lastId = 1L
+        }else{
+            lastId += 1L
         }
+
+        val hash = generateOrderCode(lastId)
 
         if(demand.items.isNotEmpty()){
             demand.items.forEach{
@@ -32,7 +36,7 @@ class DemandService(
                     qtdchanged = it.qtd,
                     client = client,
                     item = it.item,
-                    orderHash = generateOrderCode(lastId)
+                    orderHash = hash
                 )
                 this.repository.save(newDemand)
             }
