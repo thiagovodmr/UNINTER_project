@@ -1,0 +1,20 @@
+<div class="content">
+  <h1 class="title">Crie sua conta</h1>
+  <div class="form">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="group">
+        <label>Usuário</label>
+        <input type="text" formControlName="user">
+      </div>
+      <div class="group">
+        <label>Senha</label>
+        <input type="password" formControlName="password">
+      </div>
+      <div class="group">
+        <label>Repita a senha</label>
+        <input type="password" formControlName="repeatPassword">
+      </div>
+      <button type="submit">Entrar</button>
+    </form>
+  </div>
+</div>

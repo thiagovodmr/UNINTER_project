@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CarComponent } from './components/car/car.component';
 import { QueueComponent } from './components/queue/queue.component';
 import { GraphicsComponent } from './components/graphics/graphics.component';
+import { RegisterUserComponent } from './components/register-user/register-user.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -11,7 +12,8 @@ const routes: Routes = [
   {path: "list", loadChildren: () => import("./components/list/module/list.module").then( (l) => l.ListModule)},
   {path: "car", component: CarComponent},
   {path: "queue", component: QueueComponent},
-  {path: "graphics", component: GraphicsComponent}
+  {path: "graphics", component: GraphicsComponent},
+  {path: "register", component: RegisterUserComponent}
 ];
 
 @NgModule({

@@ -17,6 +17,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 import { CarComponent } from './components/car/car.component';
 import { QueueComponent } from './components/queue/queue.component';
 import { GraphicsComponent } from './components/graphics/graphics.component';
+import { RegisterUserComponent } from './components/register-user/register-user.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { GraphicsComponent } from './components/graphics/graphics.component';
     LoginComponent,
     CarComponent,
     QueueComponent,
-    GraphicsComponent
+    GraphicsComponent,
+    RegisterUserComponent
   ],
   imports: [
     BrowserModule,

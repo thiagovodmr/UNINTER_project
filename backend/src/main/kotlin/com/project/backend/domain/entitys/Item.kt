@@ -17,7 +17,7 @@ class Item(
     val description: String,
     val price: Double,
 
-    @Column(name = "image", columnDefinition = "BINARY")
+    @Column(name = "image", columnDefinition = "BYTEA")
     val image: ByteArray,
 
     @ManyToOne

@@ -1,0 +1,30 @@
+.content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .title{
+    margin-top: 100px;
+  }
+
+  form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    .group{
+      display: flex;
+      flex-direction: column;
+    }
+
+    button{
+      border-radius: 4px;
+      color: white;
+      background-color: red;
+      align-self: center;
+      border: none;
+      width: 100px;
+      height: 30px;
+    }
+  }
+
+}

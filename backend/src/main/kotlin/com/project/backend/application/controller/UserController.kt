@@ -34,7 +34,7 @@ class UserController (
     }
 
     @PostMapping("/create")
-    fun create(userDto : UserDto) : ResponseEntity<User>{
+    fun create(@RequestBody userDto : UserDto) : ResponseEntity<User>{
         return try{
             val user = this.userService.create(userDto)
             ResponseEntity.ok(user)
