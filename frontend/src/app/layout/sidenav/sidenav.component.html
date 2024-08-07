@@ -34,7 +34,7 @@
     </span>
   </div>
   <div class="register">
-    <span [routerLink]="['/register']">
+    <span *ngIf="!loginService.isAuthenticated" [routerLink]="['/register']">
       <span class="icon">
         <fa-icon icon="user"></fa-icon>
       </span>

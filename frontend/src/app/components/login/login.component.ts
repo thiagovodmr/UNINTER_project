@@ -1,3 +1,4 @@
+import { AuthEmitterService } from './../../emitter/auth-emitter.service';
 import { Router } from '@angular/router';
 import { SessionService } from './../../services/session.service';
 import { LoginService } from './../../services/login.service';
@@ -16,6 +17,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private service : LoginService,
     private session: SessionService,
+    private authEmitterService: AuthEmitterService,
     private router: Router
   ) {
     this.loginForm = new FormGroup(
@@ -26,8 +28,7 @@ export class LoginComponent implements OnInit {
     )
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onSubmit(){
     const user = this.loginForm.value.user
@@ -37,6 +38,8 @@ export class LoginComponent implements OnInit {
         this.session.setUserLogged(user)
         this.router.navigate(['/list'])
         this.service.isAuthenticated = true
+        this.authEmitterService.emitToggleAuth(true)
+
         if(user.role == "ADMIN"){
           this.service.isAdmin = true
         }

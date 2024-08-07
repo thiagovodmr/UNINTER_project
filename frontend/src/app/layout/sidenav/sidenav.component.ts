@@ -1,3 +1,4 @@
+import { AuthEmitterService } from './../../emitter/auth-emitter.service';
 import { CarEmitterService } from './../../emitter/car-emitter.service';
 import { CarService } from './../../services/car.service';
 import { SessionService } from './../../services/session.service';
@@ -18,26 +19,27 @@ export class SidenavComponent implements OnInit {
     public loginService : LoginService,
     private session : SessionService,
     private carService: CarService,
-    private emitter: CarEmitterService,
+    private carEmitter: CarEmitterService,
+    private authEmitterService: AuthEmitterService,
     private router : Router
   ) { }
 
   ngOnInit(): void {
     const userLogged = this.session.getUserLogged()
     if(userLogged){
-      this.loginService.isAuthenticated = true
-      this.name = userLogged.name
-      if(userLogged.role == "ADMIN"){
-        this.loginService.isAdmin = true
-      }else{
-        this.countItemsCar(userLogged.id)
-        this.loginService.isAdmin = false
-      }
+      this.login(userLogged)
     }
 
-    this.emitter.getEventEmitter().subscribe(dados => {
+    this.carEmitter.getEventEmitter().subscribe(dados => {
       if(dados){
         this.countItemsCar(userLogged.id)
+      }
+    });
+
+    this.authEmitterService.getEventEmitter().subscribe((isAuthenticated) => {
+      if(isAuthenticated){
+        const userLogged = this.session.getUserLogged()
+        this.login(userLogged)
       }
     });
   }
@@ -47,6 +49,18 @@ export class SidenavComponent implements OnInit {
     this.loginService.isAuthenticated = false
     this.loginService.isAdmin = false
     this.router.navigate(["/list"])
+    this.name=""
+  }
+
+  login(userLogged: any){
+    this.loginService.isAuthenticated = true
+    this.name = userLogged.name
+    if(userLogged.role == "ADMIN"){
+      this.loginService.isAdmin = true
+    }else{
+      this.countItemsCar(userLogged.id)
+      this.loginService.isAdmin = false
+    }
   }
 
   countItemsCar(id: number){
