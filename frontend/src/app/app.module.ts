@@ -18,6 +18,7 @@ import { CarComponent } from './components/car/car.component';
 import { QueueComponent } from './components/queue/queue.component';
 import { GraphicsComponent } from './components/graphics/graphics.component';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
+import { AddComponent } from './components/list/pages/category/add/add.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { RegisterUserComponent } from './components/register-user/register-user.
     CarComponent,
     QueueComponent,
     GraphicsComponent,
-    RegisterUserComponent
+    RegisterUserComponent,
+    AddComponent
   ],
   imports: [
     BrowserModule,

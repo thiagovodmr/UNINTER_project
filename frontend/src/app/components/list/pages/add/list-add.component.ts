@@ -36,6 +36,10 @@ export class ListAddComponent implements OnInit {
     this.getCategorys()
   }
 
+  registerCategory(){
+    this.router.navigate(['/category/add'])
+  }
+
   onFileSelected(event: any) {
     const file = event.target.files[0];
     this.pedidoForm.patchValue({ image: file });
