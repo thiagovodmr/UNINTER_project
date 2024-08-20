@@ -10,6 +10,7 @@ class UserMapper{
     fun entityToDto(user : User) : UserDto{
         return UserDto(
             user.name,
+            user.email,
             user.password,
             user.role
         )
@@ -26,6 +27,7 @@ class UserMapper{
     fun dtoToEntity(userDto: UserDto) : User{
         return User(
             name = userDto.name,
+            email = userDto.email,
             password = userDto.password,
             role = "CLIENT"
         )

@@ -28,7 +28,11 @@ class Demand (
 
     @ManyToOne
     @JoinColumn(name ="item_id")
-    val item: Item
+    val item: Item,
+
+    @OneToOne
+    @JoinColumn(name ="status_id")
+    val status: DemandStatus? = null
 ){
     @PrePersist
     fun prePersist() {

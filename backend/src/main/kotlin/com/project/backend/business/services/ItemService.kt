@@ -24,6 +24,10 @@ class ItemService(
         return this.repository.save(item)
     }
 
+    fun deleteItem(id: Long){
+        this.repository.deleteById(id);
+    }
+
     fun list() : List<ItemDTO>{
         return this.repository.findAll().map {
             this.mapper.entityToDto(it)

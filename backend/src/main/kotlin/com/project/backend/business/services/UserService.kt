@@ -14,7 +14,7 @@ class UserService(
 ){
 
     fun login(username: String, password: String): UserLoginDto? {
-        val user = userRepository.findByNameAndPassword(username, password)
+        val user = userRepository.findByEmailAndPassword(username, password)
         return user?.let(userMapper::entityToLoginDto)
     }
 

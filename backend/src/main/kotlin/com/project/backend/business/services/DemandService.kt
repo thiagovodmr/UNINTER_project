@@ -5,6 +5,7 @@ import com.project.backend.application.dtos.QueueDto
 import com.project.backend.domain.entitys.Demand
 import com.project.backend.domain.repositorys.CarRepository
 import com.project.backend.domain.repositorys.DemandRepository
+import com.project.backend.domain.repositorys.DemandStatusRepository
 import com.project.backend.domain.repositorys.UserRepository
 import jakarta.transaction.Transactional
 import org.springframework.stereotype.Service
@@ -13,12 +14,14 @@ import org.springframework.stereotype.Service
 class DemandService(
     private val repository : DemandRepository,
     private val userRepository: UserRepository,
-    private val carRepository: CarRepository
+    private val carRepository: CarRepository,
+    private val statusRepository: DemandStatusRepository
 ){
     @Transactional
     fun create(demand : DemandDto) : Boolean{
         val client = this.userRepository.findById(demand.clientId).orElseThrow()
         var lastId = this.repository.findTopByOrderByIdDesc()
+        val statusDemand = this.statusRepository.findById(1L).orElseThrow()
 
         if(lastId == null){
             lastId = 1L
@@ -36,7 +39,8 @@ class DemandService(
                     qtdchanged = it.qtd,
                     client = client,
                     item = it.item,
-                    orderHash = hash
+                    orderHash = hash,
+                    status = statusDemand
                 )
                 this.repository.save(newDemand)
             }

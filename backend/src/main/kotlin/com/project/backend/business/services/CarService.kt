@@ -27,4 +27,8 @@ class CarService(
     fun countItems(userId: Long) : Long{
         return this.repository.countByUserId(userId)
     }
+
+    fun deleteCar(carId : Long){
+        return this.repository.deleteById(carId);
+    }
 }
