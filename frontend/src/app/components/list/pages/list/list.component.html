@@ -28,9 +28,13 @@
             {{item.price | currency: 'BR':"RS ":"1.2-2"}}
         </div>
 
-        <button type="button" (click)="addInCar(item.id)">
+        <button type="button" (click)="addInCar(item.id)" *ngIf="userLogged?.role != 'ADMIN'">
           Adicionar ao
           <fa-icon icon="cart-plus"></fa-icon>
+        </button>
+
+        <button type="button" class="remove" (click)="removeItem(item.id)" *ngIf="userLogged?.role == 'ADMIN'">
+          <fa-icon icon="trash"></fa-icon>
         </button>
     </div>
 </div>

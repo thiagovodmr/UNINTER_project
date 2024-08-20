@@ -10,10 +10,11 @@ import { User } from '../class/User';
 export class RegisterService {
   constructor(private http: HttpClient) { }
 
-  register(user: String, password: String): Observable<User>{
+  register(user: String, password: String, email: String): Observable<User>{
     const url = "http://localhost:8080/api/user/create"
     const data = {
       "name": user,
+      "email": email,
       "password": password
     }
     return this.http.post<User>(url, data).pipe(take(1));

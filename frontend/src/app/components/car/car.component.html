@@ -7,6 +7,7 @@
         <th>Preço por unidade</th>
         <th>Escolha a quantidade</th>
         <th>Preço final</th>
+        <th>Ações</th>
       </tr>
     </thead>
     <tbody *ngIf="items.length > 0 else nv">
@@ -17,6 +18,9 @@
           <input type="number" [value]="row.qtd" (change)="changeCont(i, $event)">
         </td>
         <td>{{row.price | currency:'BR':'R$ ':'1.2-2'}}</td>
+        <td>
+          <fa-icon icon="trash" (click)="deleteDemand(row.id)"></fa-icon>
+        </td>
       </tr>
       <tr class="total">
         <td colspan="2">Total</td>
@@ -26,7 +30,7 @@
     <ng-template #nv>
       <tbody>
           <tr>
-            <td colspan="4">Nenhum valor encontrado</td>
+            <td colspan="5">Nenhum valor encontrado</td>
           </tr>
       </tbody>
     </ng-template>

@@ -56,6 +56,21 @@ export class CarComponent implements OnInit {
     });
   }
 
+  deleteDemand(carId: string){
+      this.carService.deleteDemand(carId).subscribe(
+        (res) => {
+          if(res == true){
+            alert("pedido deletado com sucesso!!")
+            this.loadItems()
+          }else{
+            console.log(res)
+          }
+        },
+        (error) => {console.log(error)}
+      )
+  }
+
+
   confirmDemand(){
     const data = {
       clientId : this.sessionService.getUserLogged().id,

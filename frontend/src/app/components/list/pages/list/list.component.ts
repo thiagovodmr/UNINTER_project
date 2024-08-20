@@ -2,6 +2,7 @@ import { CarEmitterService } from './../../../../emitter/car-emitter.service';
 import { SessionService } from './../../../../services/session.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'src/app/class/User';
 import { ListService } from 'src/app/services/list.service';
 
 
@@ -12,6 +13,7 @@ import { ListService } from 'src/app/services/list.service';
 })
 export class ListComponent implements OnInit {
   items : any = []
+  userLogged: any;
 
   constructor(
     private service : ListService,
@@ -22,6 +24,11 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
    this.getList()
+
+   const userLogged = this.sessionService.getUserLogged()
+    if(userLogged){
+      this.userLogged = userLogged;
+    }
   }
 
   getList(){
@@ -44,7 +51,7 @@ export class ListComponent implements OnInit {
 
   addInCar(itemId : number){
     const user = this.sessionService.getUserLogged();
-    if(user.id){
+    if(user?.id){
       this.service.PostAddCar(itemId, user.id).subscribe(
         (res) => {
           this.emitter.sendEvend(true)
@@ -55,6 +62,16 @@ export class ListComponent implements OnInit {
     }else{
       this.route.navigate(["/login"])
     }
+  }
+
+  removeItem(itemId : number){
+
+      this.service.deleteItem(itemId).subscribe(
+        (res) => {
+          this.getList();
+        },
+        (error) => console.error(error)
+      )
   }
 }
 

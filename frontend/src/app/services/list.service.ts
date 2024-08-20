@@ -33,4 +33,8 @@ export class ListService {
     return this.http.post(`${this.urlAPI}/item/car`, data).pipe(take(1))
   }
 
+  deleteItem(itemId: number){
+    return this.http.delete(`${this.urlAPI}/item/${itemId}`).pipe(take(1))
+  }
+
 }

@@ -18,6 +18,7 @@ export class RegisterUserComponent implements OnInit {
     this.registerForm = new FormGroup(
       {
         user : new FormControl(""),
+        email : new FormControl(""),
         password : new FormControl(""),
         repeatPassword : new FormControl("")
       }
@@ -29,6 +30,7 @@ export class RegisterUserComponent implements OnInit {
 
   onSubmit(){
     const user = this.registerForm.value.user
+    const email = this.registerForm.value.email
     const password = this.registerForm.value.password
     const repeatPassword = this.registerForm.value.repeatPassword
 
@@ -37,7 +39,7 @@ export class RegisterUserComponent implements OnInit {
       return
     }
 
-    this.service.register(user, password).subscribe(
+    this.service.register(user, password, email).subscribe(
       () => {
         this.router.navigate(['/login'])
       },

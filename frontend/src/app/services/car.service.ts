@@ -28,4 +28,8 @@ export class CarService {
   confirmDemand(data: any){
     return this.http.post(`${this.urlAPI}/demand`, data).pipe(take(1))
   }
+
+  deleteDemand(carId: string) : Observable<any>{
+    return this.http.delete(`${this.urlAPI}/car/${carId}`).pipe(take(1))
+  }
 }
