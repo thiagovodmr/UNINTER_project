@@ -1,32 +1,14 @@
 <div class="content">
   <header>
-    <h1>Cadastrar Category</h1>
+    <h1>Cadastrar Categoria</h1>
   </header>
 
-  <!-- <form [formGroup]="pedidoForm" (ngSubmit)="criarPedido()">
-    <div class="group">
-      <label>Imagem</label>
-      <input type="file" (change)="onFileSelected($event)">
-    </div>
+  <form [formGroup]="categoriaForm" (ngSubmit)="createCategory()">
     <div class="group">
       <label>Descrição</label>
       <input type="text" formControlName="description" placeholder="Descrição">
     </div>
-    <div class="group">
-      <label>Preço</label>
-      <input type="number" formControlName="price" placeholder="Preço">
-    </div>
-    <div class="group">
-      <label>Categoria</label>
-      <div class="icon">
-        <select name="status_id" id="status" formControlName="status_id">
-          <option *ngFor="let category of categories" [value]="category.id">{{category.description}}</option>
-        </select>
-        <div class="plus" (click)="registerCategory()">
-          <fa-icon icon="plus"></fa-icon>
-        </div>
-      </div>
-    </div> -->
-    <!-- <button type="submit">Cadastrar</button> -->
-  <!-- </form> -->
+
+    <button type="submit">Cadastrar</button>
+  </form>
 </div>

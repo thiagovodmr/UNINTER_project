@@ -17,4 +17,12 @@ export class CategoryService {
   listAll() : Observable<any>{
     return this.http.get(`${this.urlAPI}/category`).pipe(take(1))
   }
+
+  create(description: any){
+    const data = {
+      "description": description,
+    }
+    return this.http.post(`${this.urlAPI}/category`, data).pipe(take(1))
+  }
+
 }

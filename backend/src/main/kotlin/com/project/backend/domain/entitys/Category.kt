@@ -8,6 +8,6 @@ import jakarta.persistence.Id
 @Entity(name="category")
 class Category (
     @Id  @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id : Long,
+    var id : Long?,
     val description : String
 )
