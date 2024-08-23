@@ -1,6 +1,7 @@
 package com.project.backend.business.services
 
 import com.project.backend.application.dtos.graphics.SalesForMonthDTO
+import com.project.backend.domain.entitys.DemandStatus
 import com.project.backend.domain.repositorys.DemandStatusRepository
 import org.springframework.stereotype.Service
 import java.math.BigDecimal
@@ -17,5 +18,10 @@ class DemandStatusService(
             val totalQtd = (it["total_qtd"] as BigDecimal).toInt()
             SalesForMonthDTO(day, totalQtd)
         }
+    }
+
+    fun getAllStatus() : List<DemandStatus>{
+        val list = demandStatusRepository.findAll();
+        return list
     }
 }

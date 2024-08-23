@@ -32,7 +32,7 @@ class Demand (
 
     @ManyToOne
     @JoinColumn(name ="status_id")
-    val status: DemandStatus? = null
+    var status: DemandStatus? = null
 ){
     @PrePersist
     fun prePersist() {

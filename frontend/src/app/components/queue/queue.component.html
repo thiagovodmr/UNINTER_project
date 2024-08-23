@@ -7,6 +7,7 @@
         <th>Cliente</th>
         <th>Preço do pedido</th>
         <th>Status</th>
+        <th *ngIf="loginService.isAdmin">Ações</th>
       </tr>
     </thead>
     <tbody>
@@ -15,7 +16,24 @@
         <td>{{row.nameClient}}</td>
         <td> {{row.priceDemand | currency : "BR":"R$":"1.2-2"}}</td>
         <td>{{row.status}}</td>
+        <td (click)="openModal(row)"><fa-icon [icon]="['fas', 'pen']"></fa-icon></td>
       </tr>
     </tbody>
   </table>
+</div>
+
+<div class="modal" *ngIf="isModalOpen">
+  <div class="modal-content">
+    <h2>Alterar Status</h2>
+    <p>Selecione o novo status para o pedido {{selectedOrder?.orderHash}}:</p>
+
+    <select [(ngModel)]="selectedOrder.status">
+      <option *ngFor="let status of availableStatuses" [value]="status">{{status}}</option>
+    </select>
+
+    <div class="modal-actions">
+      <button class="confirm" (click)="confirmStatusChange()">Confirmar</button>
+      <button class="cancel" (click)="closeModal()">Cancelar</button>
+    </div>
+  </div>
 </div>

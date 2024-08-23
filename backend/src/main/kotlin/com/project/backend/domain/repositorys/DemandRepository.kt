@@ -5,6 +5,7 @@ import com.project.backend.domain.entitys.Demand
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 import org.springframework.stereotype.Repository
+import java.util.Optional
 
 @Repository
 interface DemandRepository : JpaRepository<Demand, Long>{
@@ -42,4 +43,9 @@ interface DemandRepository : JpaRepository<Demand, Long>{
         select id from demand ORDER BY id DESC;
     """, nativeQuery = true)
     fun findTopByOrderByIdDesc(): Long?
+
+    @Query("""
+        select * from demand d where d.order_hash = :order
+    """, nativeQuery = true)
+    fun findByOrder(order: String): Optional<Demand>
 }

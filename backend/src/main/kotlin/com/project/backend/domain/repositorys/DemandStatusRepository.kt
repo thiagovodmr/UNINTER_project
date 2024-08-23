@@ -1,9 +1,11 @@
 package com.project.backend.domain.repositorys
 
 import com.project.backend.domain.entitys.DemandStatus
+import org.springframework.context.annotation.Description
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 import org.springframework.stereotype.Repository
+import java.util.Optional
 
 @Repository
 interface DemandStatusRepository : JpaRepository<DemandStatus, Long>{
@@ -23,4 +25,6 @@ interface DemandStatusRepository : JpaRepository<DemandStatus, Long>{
             day
     """, nativeQuery = true)
     fun findSalesCurrentMonth(): List<Map<String, Any>>
+
+    fun findByDescription(description: String) : Optional<DemandStatus>
 }

@@ -2,6 +2,7 @@ package com.project.backend.business.services
 
 import com.project.backend.application.dtos.DemandDto
 import com.project.backend.application.dtos.QueueDto
+import com.project.backend.application.dtos.QueueStatusDto
 import com.project.backend.domain.entitys.Demand
 import com.project.backend.domain.repositorys.CarRepository
 import com.project.backend.domain.repositorys.DemandRepository
@@ -66,6 +67,16 @@ class DemandService(
         val orderString = "ORD${String.format("%04d", orderId.toInt())}"
         val randomSuffix = (1000..9999).random() // Gera um número aleatório de 4 dígitos
         return "$orderString$randomSuffix"
+    }
+
+    fun updateStatus(queueDto: QueueStatusDto) : Boolean{
+        val demand = this.repository.findByOrder(queueDto.orderHash).orElseThrow()
+        val status = this.statusRepository.findByDescription(queueDto.status).orElseThrow()
+
+        demand.status = status
+
+        this.repository.save(demand)
+        return true
     }
 
 }
