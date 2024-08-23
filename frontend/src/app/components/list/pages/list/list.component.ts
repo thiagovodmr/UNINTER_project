@@ -2,7 +2,6 @@ import { CarEmitterService } from './../../../../emitter/car-emitter.service';
 import { SessionService } from './../../../../services/session.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from 'src/app/class/User';
 import { ListService } from 'src/app/services/list.service';
 
 
@@ -65,7 +64,6 @@ export class ListComponent implements OnInit {
   }
 
   removeItem(itemId : number){
-
       this.service.deleteItem(itemId).subscribe(
         (res) => {
           this.getList();

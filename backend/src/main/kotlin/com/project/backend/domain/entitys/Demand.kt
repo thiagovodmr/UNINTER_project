@@ -30,7 +30,7 @@ class Demand (
     @JoinColumn(name ="item_id")
     val item: Item,
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name ="status_id")
     val status: DemandStatus? = null
 ){
