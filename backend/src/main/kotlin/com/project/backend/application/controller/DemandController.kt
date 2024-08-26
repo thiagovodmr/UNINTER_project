@@ -30,7 +30,7 @@ class DemandController(
     }
 
     @PutMapping
-    fun put(@RequestBody queue : QueueStatusDto) : ResponseEntity<Boolean>{
+    fun updateStatus(@RequestBody queue : QueueStatusDto) : ResponseEntity<Boolean>{
         return try {
             val result = this.service.updateStatus(queue)
             ResponseEntity.ok().body(result)

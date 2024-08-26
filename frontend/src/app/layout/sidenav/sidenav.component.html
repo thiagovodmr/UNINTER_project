@@ -13,7 +13,7 @@
       Ver Gráfico
     </span>
   </div>
-  <div class="car">
+  <div class="car" *ngIf="!loginService.isAdmin">
     <button [routerLink]="['/car']">
       <fa-icon icon="shopping-cart"></fa-icon>
       <span>{{countItems}}</span>

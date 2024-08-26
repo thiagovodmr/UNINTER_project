@@ -10,8 +10,8 @@ import java.util.Optional
 @Repository
 interface DemandRepository : JpaRepository<Demand, Long>{
     @Query("""
-        SELECT 
-             cl.name as nameClient, 
+         SELECT 
+             cl.name as nameClient,
              sum(price_by_quant) as priceDemand,
              ds.description as status,
              d.order_hash as orderHash
@@ -19,8 +19,8 @@ interface DemandRepository : JpaRepository<Demand, Long>{
         INNER JOIN users as cl on d.client_id = cl.id
         INNER JOIN demand_status as ds on d.status_id = ds.id
         WHERE cl.id = :clientId
-        GROUP BY cl.name, d.date_demanded, ds.description, d.order_hash
-        order by d.date_demanded
+        GROUP BY cl.name, ds.description, d.order_hash
+        order by order_hash desc
     """, nativeQuery = true)
     fun getByUserId(clientId: Long) : List<QueueDto>
 
@@ -33,14 +33,14 @@ interface DemandRepository : JpaRepository<Demand, Long>{
         from demand as d
         INNER JOIN users as cl on d.client_id = cl.id
         INNER JOIN demand_status as ds on d.status_id = ds.id
-        GROUP BY cl.name, d.date_demanded, ds.description, d.order_hash
-        order by d.date_demanded
+        GROUP BY cl.name, ds.description, d.order_hash
+        order by order_hash desc
     """, nativeQuery = true)
     fun getAll() : List<QueueDto>
 
 
     @Query("""
-        select id from demand ORDER BY id DESC;
+        select id from demand ORDER BY id DESC LIMIT 1;
     """, nativeQuery = true)
     fun findTopByOrderByIdDesc(): Long?
 

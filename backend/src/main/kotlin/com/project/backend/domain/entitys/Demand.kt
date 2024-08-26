@@ -22,6 +22,9 @@ class Demand (
     @Column(name = "date_demanded")
     var dateDemanded : LocalDateTime? = LocalDateTime.now(),
 
+    @Column(name = "date_status_changed")
+    var dateStatusChanged : LocalDateTime? = LocalDateTime.now(),
+
     @ManyToOne
     @JoinColumn(name ="client_id")
     val client: User,
@@ -33,6 +36,8 @@ class Demand (
     @ManyToOne
     @JoinColumn(name ="status_id")
     var status: DemandStatus? = null
+
+
 ){
     @PrePersist
     fun prePersist() {

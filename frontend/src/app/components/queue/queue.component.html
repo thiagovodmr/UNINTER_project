@@ -16,7 +16,7 @@
         <td>{{row.nameClient}}</td>
         <td> {{row.priceDemand | currency : "BR":"R$":"1.2-2"}}</td>
         <td>{{row.status}}</td>
-        <td (click)="openModal(row)"><fa-icon [icon]="['fas', 'pen']"></fa-icon></td>
+        <td *ngIf="loginService.isAdmin" (click)="openModal(row)"><fa-icon [icon]="['fas', 'pen']"></fa-icon></td>
       </tr>
     </tbody>
   </table>

@@ -10,6 +10,7 @@ import com.project.backend.domain.repositorys.DemandStatusRepository
 import com.project.backend.domain.repositorys.UserRepository
 import jakarta.transaction.Transactional
 import org.springframework.stereotype.Service
+import java.time.LocalDateTime
 
 @Service
 class DemandService(
@@ -74,6 +75,7 @@ class DemandService(
         val status = this.statusRepository.findByDescription(queueDto.status).orElseThrow()
 
         demand.status = status
+        demand.dateStatusChanged = LocalDateTime.now()
 
         this.repository.save(demand)
         return true

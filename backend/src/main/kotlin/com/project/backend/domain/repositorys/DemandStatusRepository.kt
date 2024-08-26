@@ -11,14 +11,14 @@ import java.util.Optional
 interface DemandStatusRepository : JpaRepository<DemandStatus, Long>{
     @Query(value = """
         SELECT 
-            EXTRACT(DAY FROM d.date_demanded) AS day,
+            EXTRACT(DAY FROM d.date_status_changed) AS day,
             SUM(d.qtd_changed) AS total_qtd
         FROM 
             demand d 
         WHERE 
             d.status_id = 4
-            AND d.date_demanded >= CURRENT_DATE - INTERVAL '30 days'
-            AND DATE_TRUNC('month', d.date_demanded) = DATE_TRUNC('month', CURRENT_DATE)
+            AND d.date_status_changed >= CURRENT_DATE - INTERVAL '30 days'
+            AND DATE_TRUNC('month', d.date_status_changed) = DATE_TRUNC('month', CURRENT_DATE)
         GROUP BY 
             day
         ORDER BY 

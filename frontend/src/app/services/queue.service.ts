@@ -22,7 +22,6 @@ export class QueueService {
 
   updateStatus(queueItem: any) : Observable<any>{
     const data = queueItem
-    console.log(data)
     return this.http.put(`${this.urlAPI}/demand`, data).pipe(take(1))
   }
 }
