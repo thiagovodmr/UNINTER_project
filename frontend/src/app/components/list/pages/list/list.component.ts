@@ -68,7 +68,9 @@ export class ListComponent implements OnInit {
         (res) => {
           this.getList();
         },
-        (error) => console.error(error)
+        (error) => {
+          alert("Não foi possível remover o item do cardápio")
+        }
       )
   }
 }
