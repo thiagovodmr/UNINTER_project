@@ -1,6 +1,15 @@
 # UNINTER_project
 projeto da atividade extensionista onde foi feito um protótipo de aplicação web para gerenciamento de pedidos, encomendas e entregas 
 
+## Principais ferramentas utilizadas
+java 17  
+kotlin com spring boot 
+
+node 14  
+Angular 12  
+
+postgres 16.3
+
 ## Segue abaixo prints de algumas das principais telas desenvolvidas
 ## Tela de criação de itens do cardápio.
 
